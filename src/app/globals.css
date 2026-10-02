@@ -1,0 +1,2010 @@
+/* Импорт оптимизированных Grid стилей */
+@import '../styles/grid.css';
+
+/* Tailwind CSS directives - игнорируются CSS валидатором, но корректно обрабатываются PostCSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+:root {
+  --primary: #4f46e5;
+  --secondary: #818cf8;
+  --accent: #c7d2fe;
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+}
+
+.dark {
+  --primary: #818cf8;
+  --secondary: #4f46e5;
+  --accent: #6366f1;
+  --text-primary: #f3f4f6;
+  --text-secondary: #d1d5db;
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    color: #1a202c;
+    background-color: #ffffff;
+    position: relative;
+    overflow-x: clip;
+  }
+
+  .dark body {
+    color: #f3f4f6;
+    background-color: #111827;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    letter-spacing: -0.025em;
+  }
+}
+
+@layer components {
+  form label.block.text-xs.text-slate-500 {
+    color: #334155;
+    font-weight: 500;
+  }
+
+  form .text-amber-800 {
+    color: #451a03;
+    font-weight: 500;
+  }
+
+  .max-w-3xl > p.text-xs.text-slate-500 {
+    color: #334155;
+    font-weight: 500;
+  }
+
+  .btn {
+    /* Tailwind @apply directive */
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200;
+  }
+
+  /* Wiki content стили для правильного отображения */
+  .wiki-content {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.8;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #374151;
+  }
+
+  @media (min-width: 768px) {
+    .wiki-content {
+      font-size: 1.05rem;
+    }
+  }
+
+  .dark .wiki-content {
+    color: #f9fafb;
+  }
+
+  .wiki-content h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+    line-height: 1.2;
+    clear: both;
+    word-wrap: break-word;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .dark .wiki-content h1 {
+    color: #ffffff;
+    border-bottom-color: #4b5563;
+  }
+
+  .wiki-content h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+    line-height: 1.3;
+    clear: both;
+    word-wrap: break-word;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 0.4rem;
+  }
+
+  .dark .wiki-content h2 {
+    color: #f9fafb;
+    border-bottom-color: #4b5563;
+  }
+
+  /* Специальные стили для заголовка "Категории статей" */
+  .wiki-content .categories-heading {
+    margin-top: 2.5rem;
+    font-size: 1.8rem;
+    color: #111827;
+    border-bottom-color: #e5e7eb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Специальные стили для списка категорий */
+  .wiki-content .categories-list {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  .wiki-content .categories-list li {
+    margin-bottom: 1rem;
+  }
+
+  .wiki-content .categories-list a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2563eb !important;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.35rem;
+  }
+
+  .wiki-content .categories-list a:hover {
+    background-color: rgba(37, 99, 235, 0.08);
+  }
+
+  .wiki-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    margin-top: 1.75rem;
+    line-height: 1.4;
+    clear: both;
+    word-wrap: break-word;
+  }
+
+  .dark .wiki-content h3 {
+    color: #f3f4f6;
+  }
+
+  .wiki-content h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+    clear: both;
+    word-wrap: break-word;
+  }
+
+  .dark .wiki-content h4 {
+    color: #f3f4f6;
+  }
+
+  .wiki-content p {
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    clear: both;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 1.05rem;
+  }
+
+  .dark .wiki-content p {
+    color: #e5e7eb;
+  }
+
+  .wiki-content p:first-of-type {
+    font-size: 1.1rem;
+    color: #374151;
+  }
+
+  .dark .wiki-content p:first-of-type {
+    color: #f3f4f6 !important;
+  }
+
+  .wiki-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2.5rem;
+    line-height: 1.7;
+    clear: both;
+    display: block;
+    width: 100%;
+    list-style-type: disc;
+  }
+
+  .wiki-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2.5rem;
+    line-height: 1.7;
+    clear: both;
+    display: block;
+    width: 100%;
+    list-style-type: decimal;
+  }
+
+  .wiki-content li {
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    padding-left: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: list-item;
+    font-size: 1.05rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dark .wiki-content li {
+    color: #e5e7eb;
+  }
+
+  /* Специальные стили для списков категорий */
+  .wiki-content .category-list li,
+  .wiki-content .categories-list li {
+    margin-bottom: 0.85rem;
+    font-size: 1.05rem;
+  }
+
+  .wiki-content strong,
+  .wiki-content b {
+    font-weight: 600;
+    color: #1f2937;
+  }
+
+  .dark .wiki-content strong,
+  .dark .wiki-content b {
+    color: #ffffff;
+  }
+
+  .wiki-content em,
+  .wiki-content i {
+    font-style: italic;
+    color: #4b5563;
+  }
+
+  .dark .wiki-content em,
+  .dark .wiki-content i {
+    color: #e5e7eb;
+  }
+
+  .wiki-content a {
+    color: #3b82f6 !important;
+    text-decoration: underline;
+    word-wrap: break-word;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    padding: 0.1rem 0.25rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    margin: 0 -0.25rem;
+  }
+
+  .wiki-content a:hover {
+    color: #1d4ed8 !important;
+    text-decoration: underline;
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+
+  .wiki-content a:visited {
+    color: #7c3aed !important;
+  }
+
+  /* Dark mode link styles */
+  .dark .wiki-content a {
+    color: #60a5fa !important;
+  }
+
+  .dark .wiki-content a:hover {
+    color: #93c5fd !important;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .wiki-content a:visited {
+    color: #c4b5fd !important;
+  }
+
+  /* Fix visited links in categories list */
+  .wiki-content .categories-list a:visited {
+    color: #2563eb !important;
+  }
+
+  /* Специальные стили для ссылок в списках категорий */
+  .wiki-content .category-list a,
+  .wiki-content .categories-list a,
+  .wiki-content ul.category-links a,
+  .wiki-content ol.category-links a {
+    color: #2563eb !important;
+    font-weight: 600;
+    text-decoration: underline;
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    margin: -0.2rem -0.4rem;
+    border-radius: 0.25rem;
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+
+  .wiki-content .category-list a:hover,
+  .wiki-content .categories-list a:hover,
+  .wiki-content ul.category-links a:hover,
+  .wiki-content ol.category-links a:hover {
+    color: #1d4ed8 !important;
+    background-color: rgba(37, 99, 235, 0.08);
+  }
+
+  /* Dark mode category list links */
+  .dark .wiki-content .category-list a,
+  .dark .wiki-content .categories-list a,
+  .dark .wiki-content ul.category-links a,
+  .dark .wiki-content ol.category-links a {
+    color: #60a5fa !important;
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .wiki-content .category-list a:hover,
+  .dark .wiki-content .categories-list a:hover,
+  .dark .wiki-content ul.category-links a:hover,
+  .dark .wiki-content ol.category-links a:hover {
+    color: #93c5fd !important;
+    background-color: rgba(59, 130, 246, 0.15);
+  }
+
+  /* Fix for visited links in categories list */
+  .dark .wiki-content .categories-list a:visited {
+    color: #60a5fa !important;
+  }
+
+  .wiki-content blockquote {
+    border-left: 4px solid #e5e7eb;
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.25rem;
+    color: #6b7280;
+    font-style: italic;
+  }
+
+  .dark .wiki-content blockquote {
+    border-left-color: #6b7280;
+    color: #d1d5db;
+  }
+
+  .wiki-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+    margin: 1.5rem 0;
+  }
+
+  .wiki-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .wiki-content th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    color: #1f2937;
+  }
+
+  .dark .wiki-content th {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #ffffff;
+  }
+
+  .wiki-content td {
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+  }
+
+  .dark .wiki-content td {
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .wiki-content code {
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+      monospace;
+    font-size: 0.875em;
+    color: #ef4444;
+    background-color: #f3f4f6;
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+  }
+
+  .dark .wiki-content code {
+    color: #f87171;
+    background-color: #374151;
+  }
+
+  /* Enhanced styles for the new EnhancedWikiContent component */
+  .enhanced-wiki-content {
+    position: relative;
+    animation: fadeInContent 0.6s ease-out;
+  }
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .enhanced-paragraph {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.75rem 0;
+  }
+
+  .enhanced-paragraph:hover {
+    background-color: rgba(59, 130, 246, 0.04);
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .enhanced-list {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(147, 51, 234, 0.02) 100%);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid #3b82f6;
+    transition: all 0.3s ease;
+  }
+
+  .enhanced-list:hover {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06) 0%, rgba(147, 51, 234, 0.06) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  }
+
+  .list-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+
+  .enhanced-wiki-link {
+    position: relative;
+    transition: all 0.25s ease;
+    background: linear-gradient(120deg, rgba(59, 130, 246, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%);
+    border-radius: 0.375rem;
+    padding: 0.25rem 0.5rem;
+    margin: 0 -0.125rem;
+    text-decoration: none !important;
+    border-bottom: 2px solid transparent;
+  }
+
+  .enhanced-wiki-link:hover {
+    background: linear-gradient(120deg, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+    transform: translateY(-1px);
+    border-bottom-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  }
+
+  .external-link::after {
+    content: '↗';
+    font-size: 0.75em;
+    margin-left: 0.25rem;
+    opacity: 0.6;
+  }
+
+  .fade-in-section {
+    opacity: 0;
+    animation: fadeInSection 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeInSection {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .lead-paragraph {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    color: #374151 !important;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+    border-radius: 0.875rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid #3b82f6;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .lead-paragraph::before {
+    content: '📖';
+    position: absolute;
+    top: 1rem;
+    left: -0.5rem;
+    background: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Улучшенные заголовки - общие стили */
+  .enhanced-wiki-content h1,
+  .enhanced-wiki-content h2,
+  .enhanced-wiki-content h3 {
+    scroll-margin-top: 80px; /* Для anchor links */
+  }
+
+  .enhanced-wiki-content h1 {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+
+  .enhanced-wiki-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    border-radius: 2px;
+  }
+
+  .enhanced-wiki-content h2 {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .enhanced-wiki-content h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    border-radius: 2px;
+  }
+
+  /* Печатные стили */
+  @media print {
+    .enhanced-wiki-content {
+      font-size: 12pt;
+      line-height: 1.4;
+    }
+
+    .enhanced-paragraph:hover,
+    .enhanced-list:hover {
+      background: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .enhanced-wiki-link {
+      color: #000 !important;
+      background: none !important;
+      text-decoration: underline !important;
+    }
+
+    .fade-in-section,
+    .enhanced-wiki-content {
+      animation: none !important;
+    }
+  }
+
+  /* Улучшения доступности */
+  @media (prefers-reduced-motion: reduce) {
+    .enhanced-wiki-content,
+    .fade-in-section,
+    .wiki-page-renderer {
+      animation: none !important;
+    }
+
+    .enhanced-paragraph:hover,
+    .enhanced-list:hover {
+      transform: none !important;
+    }
+  }
+
+  /* Темная тема */
+  .dark .enhanced-wiki-content {
+    color: #e5e7eb;
+  }
+
+  .dark .enhanced-wiki-content h1,
+  .dark .enhanced-wiki-content h2,
+  .dark .enhanced-wiki-content h3,
+  .dark .enhanced-wiki-content h4,
+  .dark .enhanced-wiki-content h5,
+  .dark .enhanced-wiki-content h6 {
+    color: #f3f4f6;
+  }
+
+  .dark .enhanced-wiki-content h1 {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .enhanced-paragraph:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+
+  .dark .enhanced-list {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
+    border-left-color: #60a5fa;
+  }
+
+  .dark .lead-paragraph {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
+    border-left-color: #60a5fa;
+    color: #f9fafb !important;
+  }
+
+  .dark .lead-paragraph::before {
+    background: #1f2937;
+  }
+
+  /* Темная тема (если будет добавлена) */
+  @media (prefers-color-scheme: dark) {
+    .enhanced-wiki-content {
+      color: #e5e7eb;
+    }
+
+    .enhanced-wiki-content h1,
+    .enhanced-wiki-content h2,
+    .enhanced-wiki-content h3 {
+      color: #f3f4f6;
+    }
+
+    .enhanced-paragraph:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .enhanced-list {
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.05) 0%,
+        rgba(147, 51, 234, 0.05) 100%
+      );
+      border-left-color: #60a5fa;
+    }
+
+    .lead-paragraph {
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.15) 0%,
+        rgba(147, 51, 234, 0.15) 100%
+      );
+      border-left-color: #60a5fa;
+    }
+  }
+
+  .wiki-content pre {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .dark .wiki-content pre {
+    background-color: #1f2937;
+  }
+
+  .wiki-content pre code {
+    color: #374151;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .dark .wiki-content pre code {
+    color: #d1d5db;
+  }
+
+  /* Дополнительные стили для wiki контента */
+  .wiki-page {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.75rem;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+  }
+
+  /* Стили для выделенного блока с экспертным гидом */
+  .wiki-content div[style*='background-color: #f0f8ff'] {
+    background-color: #f0f8ff !important;
+    color: #1f2937 !important;
+  }
+
+  .dark .wiki-content div[style*='background-color: #f0f8ff'] {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+  }
+
+  .wiki-page h1 {
+    color: #1f2937 !important;
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1.25rem !important;
+    word-wrap: break-word;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .wiki-page .text-sm {
+    color: #6b7280 !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .wiki-page .flex.flex-wrap.gap-2 {
+    margin-bottom: 1.5rem;
+  }
+
+  /* Стили для категорий статей на странице wiki/category */
+  .wiki-category-page h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 0.5rem;
+  }
+
+  .wiki-category-page ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+  }
+
+  .wiki-category-page li {
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+  }
+
+  .wiki-category-page li:hover {
+    background-color: rgba(37, 99, 235, 0.05);
+  }
+
+  .wiki-category-page li a {
+    color: #2563eb !important;
+    font-weight: 500;
+    text-decoration: underline;
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    margin: -0.2rem -0.4rem;
+    border-radius: 0.25rem;
+  }
+
+  .wiki-category-page li a:hover {
+    color: #1d4ed8 !important;
+  }
+}
+
+@layer components {
+  .container {
+    /* Tailwind @apply directive */
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    /* Tailwind @apply directive */
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  /* Кастомный градиент для hero секции */
+  .hero-gradient {
+    background: linear-gradient(to right, rgba(79, 70, 229, 0.8), rgba(129, 140, 248, 0.8));
+  }
+}
+
+/* RainbowKit кастомизация */
+[data-rk] {
+  --rk-colors-modalBackground: rgb(255 255 255);
+  --rk-colors-modalBorder: rgb(229 231 235);
+  --rk-colors-modalText: rgb(17 24 39);
+  --rk-colors-modalTextSecondary: rgb(107 114 128);
+  --rk-colors-connectButtonBackground: rgb(79 70 229);
+  --rk-colors-connectButtonText: rgb(255 255 255);
+  --rk-radii-modal: 12px;
+}
+
+.dark [data-rk] {
+  --rk-colors-modalBackground: rgb(31 41 55);
+  --rk-colors-modalBorder: rgb(75 85 99);
+  --rk-colors-modalText: rgb(243 244 246);
+  --rk-colors-modalTextSecondary: rgb(156 163 175);
+  --rk-colors-connectButtonBackground: rgb(99 102 241);
+  --rk-colors-connectButtonText: rgb(255 255 255);
+}
+
+/* Улучшенная прокрутка для RainbowKit модала */
+[data-rk] [role='dialog'] {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Кастомная прокрутка */
+[data-rk] [role='dialog']::-webkit-scrollbar {
+  width: 6px;
+}
+
+[data-rk] [role='dialog']::-webkit-scrollbar-track {
+  background: rgb(243 244 246);
+  border-radius: 3px;
+}
+
+.dark [data-rk] [role='dialog']::-webkit-scrollbar-track {
+  background: rgb(55 65 81);
+}
+
+[data-rk] [role='dialog']::-webkit-scrollbar-thumb {
+  background: rgb(156 163 175);
+  border-radius: 3px;
+}
+
+[data-rk] [role='dialog']::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+.dark [data-rk] [role='dialog']::-webkit-scrollbar-thumb {
+  background: rgb(107 114 128);
+}
+
+.dark [data-rk] [role='dialog']::-webkit-scrollbar-thumb:hover {
+  background: rgb(156 163 175);
+}
+
+/* Дополнительные стили для списка кошельков */
+[data-rk] [role='dialog'] > div > div {
+  max-height: none;
+}
+
+/* Обеспечиваем правильное отображение содержимого */
+[data-rk] button[role='option'] {
+  margin-bottom: 8px;
+}
+
+/* TON Connect улучшения */
+.tc-root {
+  --tc-bg-color: rgb(255 255 255);
+  --tc-text-color: rgb(17 24 39);
+  --tc-border-color: rgb(229 231 235);
+}
+
+.dark .tc-root {
+  --tc-bg-color: rgb(31 41 55);
+  --tc-text-color: rgb(243 244 246);
+  --tc-border-color: rgb(75 85 99);
+}
+
+/* Жесткое скрытие всех кошельков кроме Telegram Wallet */
+[data-tc-wallets-modal-list] > *:not(:first-child) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Скрытие конкретных кошельков по названию */
+[data-tc-wallets-modal-list] [aria-label*='Tonkeeper'],
+[data-tc-wallets-modal-list] [aria-label*='MyTonWallet'],
+[data-tc-wallets-modal-list] [aria-label*='View all'] {
+  display: none !important;
+}
+
+/* Скрытие кнопки View all wallets - используем более совместимый селектор */
+[data-tc-wallets-modal-list] button[aria-label*='View all'],
+[data-tc-wallets-modal-list] button[title*='View all'] {
+  display: none !important;
+}
+
+/* Скрытие заголовка Popular - используем более точные селекторы */
+[data-tc-wallets-modal-content] > p:first-child,
+[data-tc-wallets-modal-content] > div > p:first-child {
+  display: none !important;
+}
+
+/* Исправление проблем с наложением текста */
+.prose {
+  max-width: none !important;
+}
+
+.prose p {
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+  line-height: 1.8 !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  margin-top: 1.6em !important;
+  margin-bottom: 0.8em !important;
+  line-height: 1.3 !important;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+  padding-left: 1.5rem !important;
+}
+
+.prose li {
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.7 !important;
+}
+
+.prose blockquote {
+  margin-top: 1.6em !important;
+  margin-bottom: 1.6em !important;
+  padding-left: 1em !important;
+  border-left: 4px solid #e5e7eb !important;
+}
+
+/* Убираем дублирование margin */
+.prose > *:first-child {
+  margin-top: 0 !important;
+}
+
+.prose > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Отступы между секциями */
+article > * + * {
+  margin-top: 1.5rem !important;
+}
+
+/* Специальные отступы для wiki страниц */
+.wiki-content {
+  line-height: 1.8;
+}
+
+.wiki-content h1,
+.wiki-content h2,
+.wiki-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 6rem;
+}
+
+.wiki-content p {
+  margin-bottom: 1.5rem;
+}
+
+.wiki-content ul,
+.wiki-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.wiki-content li {
+  margin: 0.5rem 0;
+}
+
+/* Custom animations for chat widget */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.2s ease-out forwards;
+}
+
+/* Утилитные классы для оптимизации UI */
+@layer utilities {
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+/* Анимация градиента для заголовков */
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+/* Современные тренды дизайна 2024-2025 */
+
+/* Glassmorphism эффекты */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-effect-dark {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Плавные микроанимации */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.8);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Улучшенные градиенты с глубиной */
+.gradient-modern {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.gradient-ocean {
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #4facfe 75%,
+    #00f2fe 100%
+  );
+  background-size: 300% 300%;
+  animation: gradient 10s ease infinite;
+}
+
+/* Neumorphism эффекты */
+.neumorphism {
+  background: #f0f0f3;
+  box-shadow:
+    20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+}
+
+.neumorphism-inset {
+  background: #f0f0f3;
+  box-shadow:
+    inset 20px 20px 60px #bebebe,
+    inset -20px -20px 60px #ffffff;
+}
+
+/* Улучшенные тени с глубиной */
+.shadow-modern {
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-modern-lg {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-glow {
+  box-shadow:
+    0 0 20px rgba(99, 102, 241, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.2),
+    0 0 60px rgba(99, 102, 241, 0.1);
+}
+
+/* Плавные переходы для интерактивности */
+.transition-modern {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Hover эффекты с трансформацией */
+.hover-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Градиентный текст с анимацией */
+.text-gradient-animated {
+  background: linear-gradient(90deg, #4f46e5 0%, #818cf8 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: none;
+}
+.dark .text-gradient-animated {
+  background: linear-gradient(90deg, #a5b4fc 0%, #c7d2fe 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Сохранение естественного цвета эмодзи */
+.text-gradient-animated emoji,
+.text-gradient-animated [style*='filter: none'],
+span[style*='filter: none'] {
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  color: initial !important;
+  filter: none !important;
+}
+
+/* Улучшенная типографика */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Плавное появление элементов */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Градиентные границы */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 10px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* Warning and conclusion sections */
+.warning {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+  color: #856404;
+}
+
+.dark .warning {
+  background: #2d3748 !important;
+  border: 1px solid #4a5568 !important;
+  color: #e2e8f0 !important;
+}
+
+.conclusion {
+  background: #d4edda;
+  border: 1px solid #28a745;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+  color: #155724;
+}
+
+.dark .conclusion {
+  background: #222c24 !important;
+  border: 1px solid #38a169 !important;
+  color: #c6f6d5 !important;
+}
+
+.visa-info {
+  background: #d4edda;
+  border: 1px solid #28a745;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+  color: #155724;
+}
+
+.dark .visa-info {
+  background: #222c24;
+  border: 1px solid #38a169;
+  color: #c6f6d5;
+}
+
+.monuments-stats {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 15px 0;
+  color: #856404;
+}
+
+.dark .monuments-stats {
+  background: #2d3748;
+  border: 1px solid #4a5568;
+  color: #e2e8f0;
+}
+
+/* Ensure text elements inside warning sections are visible in dark theme */
+.dark .warning strong,
+.dark .warning h3 {
+  color: #faf089 !important;
+}
+
+.dark .conclusion strong,
+.dark .conclusion h3 {
+  color: #9ae6b4 !important;
+}
+
+.dark .visa-info strong,
+.dark .visa-info h3 {
+  color: #9ae6b4 !important;
+}
+
+.dark .monuments-stats strong,
+.dark .monuments-stats h3 {
+  color: #faf089 !important;
+}
+
+/* Ensure paragraphs are visible */
+.dark .warning p,
+.dark .conclusion p,
+.dark .visa-info p,
+.dark .monuments-stats p {
+  color: inherit;
+}
+
+/* 3D Map Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+.translate-z-30 {
+  transform: translateZ(30px);
+}
+
+.rotate-x-5 {
+  transform: rotateX(5deg);
+}
+
+.rotate-y-5 {
+  transform: rotateY(5deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Скрытие скроллбара для горизонтального скролла */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera*/
+}
+
+/* Line clamp utility classes */
+
+/* Величественный "киношный" полет на пользователя */
+@keyframes eagle-surge {
+  0%, 100% { 
+    transform: translateY(0) translateZ(80px) rotateX(2deg) rotateY(-2deg); 
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.6));
+  }
+  50% { 
+    transform: translateY(-40px) translateZ(250px) rotateX(10deg) rotateY(5deg); 
+    filter: drop-shadow(0 80px 100px rgba(0,0,0,0.8));
+  }
+}
+
+.living-eagle-shadow {
+  transition: filter 0.5s ease;
+}
+
+.premium-coat-of-arms {
+  transform-style: preserve-3d;
+  perspective: 2500px;
+}
+
+.eagle-main-container {
+  animation: eagle-surge 12s ease-in-out infinite;
+  transform-style: preserve-3d;
+  z-index: 50;
+  will-change: transform, filter;
+}
+
+.premium-coat-of-arms:hover .eagle-main-container {
+  animation-play-state: paused;
+  transform: translateZ(350px) translateY(-30px) rotateY(15deg);
+}
+
+.russian-flag-wrapper {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: white;
+  overflow: hidden;
+}
+
+.russian-flag-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.flag-stripe {
+  flex: 1;
+  width: 100%;
+}
+
+/* Навигационный мини-герб */
+.nav-eagle-badge {
+  position: relative;
+  width: 42px; /* Оптимизировано для мобильных */
+  height: 20px;
+  perspective: 500px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid rgb(100 116 139 / 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-eagle-badge {
+    width: 54px;
+    height: 24px;
+    margin-left: 12px;
+  }
+}
+
+.nav-flag-base {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.3);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-eagle-container {
+  position: absolute;
+  z-index: 50;
+  width: 34px;
+  height: 34px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateZ(15px);
+  animation: alive-float 10s ease-in-out infinite;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .nav-eagle-container {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.stripe-white { background: #ffffff !important; }
+.stripe-blue  { background: #0033a0 !important; }
+.stripe-red   { background: #da291c !important; }
+
+/* Эффект шелка/складок поверх флага */
+.flag-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.country-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .country-card {
+  background: #1f2937;
+}
+
+.country-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.country-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.country-card h3 {
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+.country-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.more-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.shadow-modern {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* ═══════════════════════════════════════
+   МОБИЛЬНАЯ АДАПТАЦИЯ
+═══════════════════════════════════════ */
+
+/* Контейнеры */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Изображения */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Iframe: сохраняем высоту у карт и медиа */
+iframe {
+  max-width: 100%;
+}
+iframe[src*="yandex"] {
+  height: 300px;
+}
+iframe[src*="google.com/maps"] {
+  height: 300px;
+}
+
+/* Текст */
+.prose, .prose * {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.prose a {
+  word-break: break-all;
+}
+
+/* Таблицы */
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Карты */
+.maplibregl-map {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Мобильные отступы */
+@media (max-width: 640px) {
+  html { 
+    font-size: 14px; 
+  }
+  
+  .prose h1 { 
+    font-size: 1.75rem; 
+  }
+  
+  .prose h2 { 
+    font-size: 1.5rem; 
+  }
+  
+  .prose h3 { 
+    font-size: 1.25rem; 
+  }
+  
+  .maplibregl-popup {
+    max-width: 280px !important;
+  }
+  
+  .maplibregl-ctrl-group {
+    width: 35px;
+  }
+  
+  .maplibregl-ctrl button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Скрытие на мобильных */
+@media (max-width: 640px) {
+  .hidden-mobile { 
+    display: none; 
+  }
+}
+
+/* Показ на мобильных */
+@media (min-width: 641px) {
+  .mobile-only { 
+    display: none; 
+  }
+}
+
+/* ═══════════════════════════════════════
+   МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ИЗОБРАЖЕНИЙ
+═══════════════════════════════════════ */
+
+.aspect-\[3\/2\] {
+  aspect-ratio: 3 / 2;
+}
+
+.aspect-\[16\/9\] {
+  aspect-ratio: 16 / 9;
+}
+
+img[data-nimg] {
+  max-width: 100%;
+  height: auto;
+}
+
+img[alt]:not([src]),
+img[src=""],
+img:not([src]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 0.875rem;
+  min-height: 200px;
+}
+
+@media (max-width: 768px) {
+  img[data-nimg] {
+    loading: lazy;
+  }
+  
+  .prose img,
+  .wiki-content img {
+    image-rendering: optimizeSpeed;
+  }
+}
+
+.next-image-container {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.image-skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+.dark .image-skeleton {
+  background: linear-gradient(
+    90deg,
+    #1f2937 0%,
+    #374151 50%,
+    #1f2937 100%
+  );
+}
+
+/* ═══════════════════════════════════════
+   АДАПТИВНОСТЬ ДЛЯ ВСЕХ УСТРОЙСТВ
+═══════════════════════════════════════ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.container-responsive {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: 1280px;
+  }
+}
+
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose, .prose * {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.prose a {
+  word-break: break-all;
+}
+
+button, a, [role="button"], input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Don't stretch inline text links in content areas */
+.breadcrumbs a,
+.wiki-content a,
+.prose a {
+  min-height: 0;
+  min-width: 0;
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .prose h1 { font-size: 1.5rem; line-height: 1.3; }
+  .prose h2 { font-size: 1.25rem; line-height: 1.4; }
+  .prose h3 { font-size: 1.125rem; line-height: 1.4; }
+  
+  .prose p, .prose ul, .prose ol {
+    margin-bottom: 1rem;
+  }
+  
+  .maplibregl-map {
+    height: 300px !important;
+  }
+  
+  .maplibregl-popup {
+    max-width: 85vw !important;
+  }
+  
+  .maplibregl-ctrl-group {
+    width: 35px;
+  }
+  
+  .maplibregl-ctrl button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .prose h1 { font-size: 1.75rem; }
+  .prose h2 { font-size: 1.5rem; }
+  
+  .maplibregl-map {
+    height: 450px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .prose h1 { font-size: 2rem; }
+  .prose h2 { font-size: 1.75rem; }
+  
+  .maplibregl-map {
+    height: 650px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .maplibregl-popup-content {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Принудительно светлый виджет TPWL */
+#tpwl-search,
+#tpwl-search * {
+  color-scheme: light !important;
+}

@@ -1,0 +1,11 @@
+# Cron configuration for Ostrovok dump workers
+# Run with: npm run dumps
+
+# Daily incremental dump at 3:00 AM
+0 3 * * * tsx src/workers/dump-worker.ts incremental
+
+# Weekly full hotel dump on Sunday at 2:00 AM
+0 2 * * 0 tsx src/workers/dump-worker.ts hotel
+
+# Weekly regions dump on Monday at 2:00 AM
+0 2 * * 1 tsx src/workers/dump-worker.ts regions

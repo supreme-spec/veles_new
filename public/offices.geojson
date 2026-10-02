@@ -1,0 +1,44 @@
+{
+  "type": "FeatureCollection",
+  "name": "veles_voyage_offices_2026",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Офис Велес Вояж Голицыно",
+        "type": "TravelAgency",
+        "address": "пр-т Керамиков, д. 103, Голицыно, Московская обл., 143041",
+        "phone": "+79850635134",
+        "openingHours": "Mo-Fr 09:00-21:00, Sa-Su 10:00-16:00",
+        "sameAs": ["https://veles-voyage.ru"],
+        "poi_nearby": [
+          {"name": "Ж/Д станция Голицыно", "distance_m": 800, "type": "transit"},
+          {"name": "ТЦ Голицыно", "distance_m": 400, "type": "shopping"}
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [36.9686, 55.6186]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Офис Велес Вояж Пушкино",
+        "type": "TravelAgency",
+        "address": "пр-т Московский, д. 9/2, Пушкино, Московская обл., 141207",
+        "phone": "+79850635134",
+        "openingHours": "Mo-Fr 09:00-21:00, Sa-Su 10:00-16:00",
+        "sameAs": ["https://veles-voyage.ru"],
+        "poi_nearby": [
+          {"name": "Ж/Д станция Пушкино", "distance_m": 600, "type": "transit"},
+          {"name": "Пушкинский районный театр", "distance_m": 300, "type": "attraction"}
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [37.8558, 56.0111]
+      }
+    }
+  ]
+}

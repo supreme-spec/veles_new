@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: veles-postgres
+    environment:
+      POSTGRES_DB: veles_voyage
+      POSTGRES_USER: veles
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-veles_secure_password_2026}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - veles-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: veles-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - veles-network
+    restart: unless-stopped
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.6
+    container_name: veles-meilisearch
+    environment:
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY:-veles_meilisearch_master_key_2026}
+      MEILI_ENV: development
+    ports:
+      - "7700:7700"
+    volumes:
+      - meilisearch_data:/meili_data
+    networks:
+      - veles-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  meilisearch_data:
+
+networks:
+  veles-network:
+    driver: bridge

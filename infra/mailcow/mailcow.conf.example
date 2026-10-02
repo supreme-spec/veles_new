@@ -1,0 +1,25 @@
+# Mailcow Configuration for veles-voyage.ru
+# Copy this file to .env and fill in the values
+
+# Database
+MAILCOW_DB_ROOT_PASSWORD=change_me_db_root_password
+MAILCOW_DB_NAME=mailcow
+MAILCOW_DB_USER=mailcow
+MAILCOW_DB_PASS=change_me_db_password
+
+# Domain
+MAILCOW_HOSTNAME=mail.veles-voyage.ru
+MAILCOW_DOMAIN=veles-voyage.ru
+
+# Mailboxes
+MAILCOW_MAILBOX=hollo
+MAILCOW_PASSWORD=change_me_mail_password
+
+# Webmail
+ROUNDCUBE_ALIAS=webmail.veles-voyage.ru
+
+# Relay (optional - if you need to send through external SMTP)
+# MAILCOW_RELAY_HOST=smtp.gmail.com
+# MAILCOW_RELAY_PORT=587
+# MAILCOW_RELAY_USER=
+# MAILCOW_RELAY_PASS=

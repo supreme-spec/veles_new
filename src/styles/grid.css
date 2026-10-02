@@ -1,0 +1,350 @@
+/* Оптимизированные CSS Grid стили */
+@layer utilities {
+  /* Кастомный скроллбар для TOC */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f1f5f9;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  }
+
+  /* Анимации для TOC */
+  .toc-item-enter {
+    animation: slideInLeft 0.3s ease-out;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Эффект подсветки для активных элементов */
+  .active-glow {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+  
+  /* Плавная анимация прогресс-бара */
+  .progress-bar {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Базовые Grid утилиты */
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .grid-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: masonry;
+    gap: 1rem;
+  }
+
+  /* Адаптивные Grid классы */
+  .grid-1 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+  /* Адаптивные span классы */
+  .col-span-1 { grid-column: span 1; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-3 { grid-column: span 3; }
+  .col-span-4 { grid-column: span 4; }
+  .col-span-5 { grid-column: span 5; }
+  .col-span-6 { grid-column: span 6; }
+  .col-span-full { grid-column: 1 / -1; }
+
+  .row-span-1 { grid-row: span 1; }
+  .row-span-2 { grid-row: span 2; }
+  .row-span-3 { grid-row: span 3; }
+  .row-span-4 { grid-row: span 4; }
+  .row-span-5 { grid-row: span 5; }
+  .row-span-6 { grid-row: span 6; }
+  .row-span-full { grid-row: 1 / -1; }
+
+  /* Именованные Grid области */
+  .grid-areas-mobile {
+    grid-template-areas: 
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-rows: auto 1fr auto auto;
+    grid-template-columns: 1fr;
+  }
+
+  .grid-areas-tablet {
+    grid-template-areas: 
+      "header header"
+      "main sidebar"
+      "footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .grid-areas-desktop {
+    grid-template-areas: 
+      "header header header"
+      "main main sidebar"
+      "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr 300px;
+  }
+
+  /* Grid области */
+  .grid-area-header { grid-area: header; }
+  .grid-area-main { grid-area: main; }
+  .grid-area-sidebar { grid-area: sidebar; }
+  .grid-area-footer { grid-area: footer; }
+
+  /* Автоподгонка Grid */
+  .grid-auto-fit-xs { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .grid-auto-fit-sm { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .grid-auto-fit-md { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid-auto-fit-lg { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+  .grid-auto-fit-xl { grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }
+
+  .grid-auto-fill-xs { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .grid-auto-fill-sm { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+  .grid-auto-fill-md { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .grid-auto-fill-lg { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
+  .grid-auto-fill-xl { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
+
+  /* Grid выравнивание */
+  .grid-items-start { align-items: start; }
+  .grid-items-center { align-items: center; }
+  .grid-items-end { align-items: end; }
+  .grid-items-stretch { align-items: stretch; }
+
+  .grid-content-start { align-content: start; }
+  .grid-content-center { align-content: center; }
+  .grid-content-end { align-content: end; }
+  .grid-content-between { align-content: space-between; }
+  .grid-content-around { align-content: space-around; }
+  .grid-content-evenly { align-content: space-evenly; }
+
+  /* Justify Grid */
+  .grid-justify-start { justify-items: start; }
+  .grid-justify-center { justify-items: center; }
+  .grid-justify-end { justify-items: end; }
+  .grid-justify-stretch { justify-items: stretch; }
+
+  .grid-justify-content-start { justify-content: start; }
+  .grid-justify-content-center { justify-content: center; }
+  .grid-justify-content-end { justify-content: end; }
+  .grid-justify-content-between { justify-content: space-between; }
+  .grid-justify-content-around { justify-content: space-around; }
+  .grid-justify-content-evenly { justify-content: space-evenly; }
+
+  /* Grid gap утилиты */
+  .gap-0 { gap: 0; }
+  .gap-px { gap: 1px; }
+  .gap-0\.5 { gap: 0.125rem; }
+  .gap-1 { gap: 0.25rem; }
+  .gap-1\.5 { gap: 0.375rem; }
+  .gap-2 { gap: 0.5rem; }
+  .gap-2\.5 { gap: 0.625rem; }
+  .gap-3 { gap: 0.75rem; }
+  .gap-3\.5 { gap: 0.875rem; }
+  .gap-4 { gap: 1rem; }
+  .gap-5 { gap: 1.25rem; }
+  .gap-6 { gap: 1.5rem; }
+  .gap-7 { gap: 1.75rem; }
+  .gap-8 { gap: 2rem; }
+  .gap-9 { gap: 2.25rem; }
+  .gap-10 { gap: 2.5rem; }
+  .gap-12 { gap: 3rem; }
+  .gap-16 { gap: 4rem; }
+  .gap-20 { gap: 5rem; }
+  .gap-24 { gap: 6rem; }
+
+  /* Отзывчивые Grid классы */
+  @media (min-width: 640px) {
+    .sm\:grid-1 { grid-template-columns: 1fr; }
+    .sm\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .sm\:grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .sm\:grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .sm\:grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .sm\:grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+    .sm\:col-span-1 { grid-column: span 1; }
+    .sm\:col-span-2 { grid-column: span 2; }
+    .sm\:col-span-3 { grid-column: span 3; }
+    .sm\:col-span-4 { grid-column: span 4; }
+    .sm\:col-span-5 { grid-column: span 5; }
+    .sm\:col-span-6 { grid-column: span 6; }
+    .sm\:col-span-full { grid-column: 1 / -1; }
+  }
+
+  @media (min-width: 768px) {
+    .md\:grid-1 { grid-template-columns: 1fr; }
+    .md\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .md\:grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .md\:grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .md\:grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .md\:grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+    .md\:col-span-1 { grid-column: span 1; }
+    .md\:col-span-2 { grid-column: span 2; }
+    .md\:col-span-3 { grid-column: span 3; }
+    .md\:col-span-4 { grid-column: span 4; }
+    .md\:col-span-5 { grid-column: span 5; }
+    .md\:col-span-6 { grid-column: span 6; }
+    .md\:col-span-full { grid-column: 1 / -1; }
+
+    .md\:grid-areas-tablet {
+      grid-template-areas: 
+        "header header"
+        "main sidebar"
+        "footer footer";
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .lg\:grid-1 { grid-template-columns: 1fr; }
+    .lg\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .lg\:grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .lg\:grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .lg\:grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .lg\:grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+    .lg\:col-span-1 { grid-column: span 1; }
+    .lg\:col-span-2 { grid-column: span 2; }
+    .lg\:col-span-3 { grid-column: span 3; }
+    .lg\:col-span-4 { grid-column: span 4; }
+    .lg\:col-span-5 { grid-column: span 5; }
+    .lg\:col-span-6 { grid-column: span 6; }
+    .lg\:col-span-full { grid-column: 1 / -1; }
+
+    .lg\:grid-areas-desktop {
+      grid-template-areas: 
+        "header header header"
+        "main main sidebar"
+        "footer footer footer";
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 1fr 1fr 300px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .xl\:grid-1 { grid-template-columns: 1fr; }
+    .xl\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .xl\:grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .xl\:grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .xl\:grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .xl\:grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+    .xl\:col-span-1 { grid-column: span 1; }
+    .xl\:col-span-2 { grid-column: span 2; }
+    .xl\:col-span-3 { grid-column: span 3; }
+    .xl\:col-span-4 { grid-column: span 4; }
+    .xl\:col-span-5 { grid-column: span 5; }
+    .xl\:col-span-6 { grid-column: span 6; }
+    .xl\:col-span-full { grid-column: 1 / -1; }
+  }
+}
+
+/* Специальные Grid компоненты */
+@layer components {
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .wiki-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .wiki-grid {
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .feature-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* CSS Grid анимации для плавных переходов */
+@layer utilities {
+  .grid-transition {
+    transition: grid-template-columns 0.3s ease-in-out,
+                grid-template-rows 0.3s ease-in-out,
+                gap 0.3s ease-in-out;
+  }
+
+  .grid-item-transition {
+    transition: grid-column 0.3s ease-in-out,
+                grid-row 0.3s ease-in-out,
+                transform 0.3s ease-in-out;
+  }
+
+  .grid-hover-grow:hover {
+    transform: scale(1.02);
+  }
+
+  .grid-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}

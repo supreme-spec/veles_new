@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Плато Укок",
+        "season": "Summer",
+        "difficulty": "high",
+        "verified_by": "Veles Voyage editorial",
+        "source_url": "https://veles-voyage.ru/wiki/altai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [87.95, 49.15]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Белуха",
+        "season": "Summer",
+        "difficulty": "high",
+        "verified_by": "Veles Voyage editorial",
+        "source_url": "https://veles-voyage.ru/wiki/altai"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [86.4219, 49.1483]
+      }
+    }
+  ]
+}

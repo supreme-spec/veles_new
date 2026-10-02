@@ -1,0 +1,6 @@
+{
+  "name": "Veles Voyage",
+  "description": "Verified open datasets and travel portal from Veles Voyage expeditions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

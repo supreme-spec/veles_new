@@ -1,0 +1,67 @@
+{
+  "name": "Велес Вояж - Энциклопедия путешествий и туризм",
+  "short_name": "Велес Вояж",
+  "description": "Откройте мир с Велес Вояж - энциклопедия путешествий, уникальные туры и практические советы путешественникам",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F46E5",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["travel", "business", "lifestyle", "reference"],
+  "lang": "ru",
+  "dir": "ltr",
+  "scope": "/",
+
+  "shortcuts": [
+    {
+      "name": "Энциклопедия стран",
+      "short_name": "Wiki",
+      "description": "Справочник по странам мира",
+      "url": "/wiki",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Страны мира",
+      "short_name": "Страны",
+      "description": "Список всех стран",
+      "url": "/wiki/countries",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "keywords": ["travel", "tourism", "wiki", "countries"],
+  "iarc_rating_id": "",
+  "edge_side_panel": {},
+  "file_handlers": [],
+  "launch_handler": {
+    "client_mode": "auto"
+  }
+}

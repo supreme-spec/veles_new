@@ -1,0 +1,1 @@
+export { TonConnectButton } from './TonConnectButton';

@@ -1,0 +1,113 @@
+# robots.txt for veles-voyage.ru
+# Updated: 2026-08-01
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /auth/
+Disallow: /payment/
+Disallow: /search?
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?yclid=
+Disallow: /*?from=
+Disallow: /*?fbclid=
+
+# AI-боты (GEO/AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# xAI (Grok)
+User-agent: Grokbot
+Allow: /
+
+User-agent: Grok
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# Bytedance / TikTok AI
+User-agent: Bytespider
+Allow: /
+
+# Mistral AI
+User-agent: MistralBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Brave Search
+User-agent: BraveBot
+Allow: /
+
+# Crawler-specific directives
+User-agent: YandexBot
+Crawl-delay: 1
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Mail.Ru_bot
+Allow: /
+
+# Sitemap
+Sitemap: https://veles-voyage.ru/sitemap.xml

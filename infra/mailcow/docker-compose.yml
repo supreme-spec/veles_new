@@ -1,0 +1,103 @@
+# Mailcow: dockerized mail server
+# Setup for veles-voyage.ru
+
+version: '3.8'
+
+services:
+  redis:
+    image: redis:6-alpine
+    restart: always
+    volumes:
+      - ./data/redis:/data
+    command: redis-server --appendonly yes
+
+  mysql:
+    image: mariadb:10.11
+    restart: always
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MAILCOW_DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MAILCOW_DB_NAME}
+      MYSQL_USER: ${MAILCOW_DB_USER}
+      MYSQL_PASSWORD: ${MAILCOW_DB_PASS}
+
+  postfix:
+    image: mailcow/postfix
+    restart: always
+    depends_on:
+      - redis
+      - mysql
+      - rspamd
+    volumes:
+      - ./data/postfix:/var/mail
+      - ./data/ssl:/etc/ssl/mail
+    environment:
+      - POSTFIX_RELAY_HOST=${MAILCOW_RELAY_HOST:-}
+      - POSTFIX_RELAY_PORT=${MAILCOW_RELAY_PORT:-}
+      - POSTFIX_RELAY_USER=${MAILCOW_RELAY_USER:-}
+      - POSTFIX_RELAY_PASS=${MAILCOW_RELAY_PASS:-}
+    ports:
+      - '25:25'
+      - '465:465'
+      - '587:587'
+
+  dovecot:
+    image: mailcow/dovecot
+    restart: always
+    depends_on:
+      - mysql
+    volumes:
+      - ./data/dovecot:/var/mail
+      - ./data/ssl:/etc/ssl/mail
+      - ./data/dovecot/dovecot.conf:/etc/dovecot/dovecot.conf
+
+  rspamd:
+    image: rspamd/rspamd:latest
+    restart: always
+    volumes:
+      - ./data/rspamd:/var/lib/rspamd
+      - ./data/ssl:/etc/ssl/mail
+    ports:
+      - '11332:11332'
+
+  webmail:
+    image: roundcube/roundcube:latest
+    restart: always
+    depends_on:
+      - mysql
+      - dovecot
+    volumes:
+      - ./data/webmail:/var/www/html
+    environment:
+      - ROUNDCUBE_DB_HOST=mysql
+      - ROUNDCUBE_DB_NAME=${MAILCOW_DB_NAME}
+      - ROUNDCUBE_DB_USER=${MAILCOW_DB_USER}
+      - ROUNDCUBE_DB_PASS=${MAILCOW_DB_PASS}
+      - ROUNDCUBE_DEFAULT_HOST=ssl://dovecot
+      - ROUNDCUBE_SMTP_SERVER=ssl://postfix
+    ports:
+      - '8080:80'
+      - '8443:443'
+
+  php-fpm:
+    image: mailcow/phpfpm
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./data/php:/var/www/mail
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    depends_on:
+      - php-fpm
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/webmail:/var/www/mail
+
+networks:
+  default:
+    driver: bridge

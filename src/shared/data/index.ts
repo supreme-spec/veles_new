@@ -1,0 +1,1 @@
+export { russianCities } from './russianCities';

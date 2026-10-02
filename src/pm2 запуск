@@ -1,0 +1,27 @@
+sudo npm install -g pm2
+# Перейдите в директорию проекта
+cd /path/to/your/project
+
+# Установите зависимости
+npm install
+
+# Запустите приложение через PM2
+pm2 start npm --name "veles-voyage" -- start
+
+# Автозапуск при перезагрузке сервера
+pm2 startup
+pm2 save
+# Просмотр статуса приложений
+pm2 status
+
+# Просмотр логов
+pm2 logs
+
+# Перезапуск приложения
+pm2 restart veles-voyage
+
+# Остановка приложения
+pm2 stop veles-voyage
+
+# Удаление приложения из PM2
+pm2 delete veles-voyage

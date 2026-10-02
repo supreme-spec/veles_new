@@ -1,0 +1,84 @@
+{
+  "test_timestamp": "2026-08-21T14:23:37Z",
+  "test_hotel_hid": 8526976,
+  "test_hotel_name": "Тест отель (НЕ ЯВЛЯЕТСЯ ОТЕЛЕМ - НЕ ДЛЯ БРОНИРОВАНИЯ) 🎅",
+  "api_tests": {
+    "connection_test": {
+      "endpoint": "/b2b/v3/hotel/info/",
+      "method": "POST",
+      "params": {
+        "hid": 8526976,
+        "language": "ru"
+      },
+      "status": "success",
+      "response_status": "ok"
+    },
+    "search_by_hotel_ids": {
+      "endpoint": "/b2b/v3/search/serp/hotels/",
+      "method": "POST",
+      "params": {
+        "hids": [8526976],
+        "checkin": "2026-08-22",
+        "checkout": "2026-08-24",
+        "guests": [{ "adults": 2 }],
+        "residency": "RU",
+        "language": "ru"
+      },
+      "status": "success",
+      "hotels_found": 1,
+      "response_status": "ok"
+    },
+    "hotelpage": {
+      "endpoint": "/b2b/v3/search/hp/",
+      "method": "POST",
+      "params": {
+        "hid": 8526976,
+        "checkin": "2026-08-22",
+        "checkout": "2026-08-24",
+        "guests": [{ "adults": 2 }],
+        "residency": "RU",
+        "language": "ru"
+      },
+      "status": "success",
+      "hotels_found": 1,
+      "rates_found": 15,
+      "response_status": "ok"
+    }
+  },
+  "verification": {
+    "to_snake_case_interceptor": "active",
+    "response_parsing": "correct",
+    "rates_structure": "valid",
+    "tax_data_present": true,
+    "cancellation_policies_present": true,
+    "meal_data_present": true
+  },
+  "sample_rate": {
+    "book_hash": "h-e04dddb8-0c52-515e-bdc6-a669d0746655",
+    "match_hash": "m-a6900b4e-e37d-5ba8-815a-0a78a8db978b",
+    "daily_prices": ["365.00", "365.00"],
+    "total_amount": "730.00",
+    "currency": "RUB",
+    "meal": "nomeal",
+    "payment_type": "hotel",
+    "taxes": [
+      { "name": "city_tax", "included": true, "amount": "80.00" },
+      { "name": "cleaning_fee", "included": false, "amount": "204.00" },
+      { "name": "hotel_fee", "included": true, "amount": "10.00" },
+      { "name": "luxury_tax", "included": false, "amount": "10.00" },
+      { "name": "resort_fee", "included": false, "amount": "80.00" },
+      { "name": "service_fee", "included": false, "amount": "19.20" },
+      { "name": "vat", "included": false, "amount": "6.40" }
+    ],
+    "free_cancellation_before": "2026-08-22T01:00:00"
+  },
+  "certification_readiness": {
+    "p0_fixes_applied": true,
+    "api_connection": "working",
+    "test_hotel_accessible": true,
+    "rates_endpoint": "working",
+    "tax_data_parsing": "correct",
+    "cancellation_policies": "correct",
+    "ready_for_certification": true
+  }
+}

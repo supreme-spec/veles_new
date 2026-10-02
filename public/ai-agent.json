@@ -1,0 +1,25 @@
+{
+  "name": "Veles Voyage Travel Agent",
+  "version": "1.0.0",
+  "description": "API для автономного бронирования туров и поиска информации по 217 странам мира для ИИ-ассистентов.",
+  "url": "https://veles-voyage.ru",
+  "api_endpoint": "https://veles-voyage.ru/api/v1/agent",
+  "documentation_url": "https://veles-voyage.ru/ai-api-docs",
+  "authentication": {
+    "type": "none",
+    "note": "Публичный доступ. Для коммерческого использования — contact@veles-voyage.ru"
+  },
+  "capabilities": [
+    "search_countries",
+    "get_visa_info",
+    "get_tour_prices",
+    "get_country_facts",
+    "search_faq"
+  ],
+  "rate_limits": {
+    "requests_per_minute": 100,
+    "burst": 20
+  },
+  "contact": "hello@veles-voyage.ru",
+  "license": "CC-BY-NC-4.0"
+}

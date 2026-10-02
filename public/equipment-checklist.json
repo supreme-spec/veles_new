@@ -1,0 +1,15 @@
+{
+  "project": "Veles Voyage Altai 2026",
+  "source": "Veles Voyage editorial / guides",
+  "items": [
+    { "category": "Navigation", "item": "Garmin inReach", "qty": 1, "required": true },
+    { "category": "Navigation", "item": "Satellite messenger", "qty": 1, "required": true },
+    { "category": "Shelter", "item": "4-season tent", "qty": 1, "required": true },
+    { "category": "Shelter", "item": "-10C sleeping bag", "qty": 1, "required": true },
+    { "category": "Clothing", "item": "Down jacket", "qty": 1, "required": true },
+    { "category": "Clothing", "item": "Rain shell", "qty": 1, "required": true },
+    { "category": "Food", "item": "Dehydrated meals", "qty": "per_day", "required": true },
+    { "category": "Safety", "item": "First aid kit", "qty": 1, "required": true },
+    { "category": "Safety", "item": "Satellite communicator / Starlink terminal", "qty": 1, "required": false }
+  ]
+}
